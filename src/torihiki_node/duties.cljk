@@ -31,8 +31,10 @@
   kotoba-lang/torihiki#41).
   3: a liquidation slice is a real trade, quoted first with every maker
   credited (#42), and every fill is settled however many the block made
-  (#43)."
-  3)
+  (#43).
+  4: a spot reservation is exactly what the account's resting orders back
+  (#47)."
+  4)
 
 (defn halt-reason
   "Why this binary must stop following `ex`, or nil.
