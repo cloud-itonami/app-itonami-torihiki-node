@@ -372,14 +372,18 @@
 
 (defn- record-fills!
   "Keep the last fills and one candle per traded block, per market — the
-  Worker's `/trades` and `/candles`, on an ordinary node. The engine resets
-  its event buffers every block, so they are read here, once, as the block is
-  applied. A view for clients, not consensus: nothing reads it back."
+  Worker's `/trades` and `/candles`, on an ordinary node. Read once per block
+  as it is applied, from the engine's `:block-fills` — the fills settlement
+  recorded — and not from the book's event buffer, which stops at `ev-cap`
+  while settlement (protocol version 3 on) does not. An engine without the
+  view falls back to the buffer. A view for clients, not consensus: nothing
+  reads it back."
   [ex]
   (try
-    (let [h (:height ex 0)]
+    (let [h (:height ex 0)
+          view (:block-fills ex)]
       (doseq [[m book] (:books ex)
-              :let [fills (bk/fills book)]
+              :let [fills (if view (get view m) (bk/fills book))]
               :when (seq fills)]
         (swap! tapes update m (fn [t] (vec (take-last tape-size
                                                        (concat t (map (fn [f] {:level (:level f) :qty (:qty f)
