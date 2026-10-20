@@ -96,7 +96,9 @@
         ;; rather than by a keeper, and cancel-all / amend.
         io.github.kotoba-lang/torihiki
         {:git/url "https://github.com/kotoba-lang/torihiki.git"
-         :git/sha "96f6daf909bd42ecf2045b97192b96f10aef670f"}
+         ;; 77f23bb: the :anchor tx + (:cid tx) signing coverage (torihiki PR #57,
+         ;; the CI-3 anchor message). Bumped from 96f6daf for the anchor deploy.
+         :git/sha "77f23bb7c72b33e7892038dbcfcd5ad57e3cbeb6"}
         io.github.kotoba-lang/bytes
         {:git/url "https://github.com/kotoba-lang/bytes.git"
          :git/sha "5f977dd3e8ca73185488302841ade390e1979540"}
