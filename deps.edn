@@ -3,7 +3,10 @@
         ;; kotoba.lang.text, not clojure.string. Pinned as an explicit floor:
         ;; tools.deps takes the NEWEST sha it is shown, so without a floor here
         ;; this repo silently rides whatever a sibling happens to name.
-        io.github.kotoba-lang/text {:git/sha "73bdb13ae7a3d004b44bca08be03a3191157a38f"}
+        io.github.kotoba-lang/text
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "b94158fd48ec541b70d3c455912a06f407537ddc"
+         :deps/root "lib/kotoba.text"}
        org.clojure/clojure {:mvn/version "1.12.0"}
         org.clojure/clojurescript {:mvn/version "1.11.132"}
         thheller/shadow-cljs {:mvn/version "2.28.20"}
@@ -72,11 +75,13 @@
         ;; The IPLD layer: canonical DAG-CBOR and CIDv1. Block identity is a
         ;; CID, so this is on the consensus path, not beside it.
         io.github.kotoba-lang/io-ipld
-        {:git/url "https://github.com/kotoba-lang/io-ipld.git"
-         :git/sha "14b53ae08e0db906355d2ceaa1f9d8288e07f797"}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "b94158fd48ec541b70d3c455912a06f407537ddc"
+         :deps/root "lib/kotoba.ioIpld"}
         io.github.kotoba-lang/torihiki-chart
-        {:git/url "https://github.com/kotoba-lang/torihiki-chart.git"
-         :git/sha "80ab3d78ee3896c40d050c025c229be23450e584"}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "b94158fd48ec541b70d3c455912a06f407537ddc"
+         :deps/root "lib/kotoba.torihikiChart"}
         ;; main, and the reason it was not main is gone.
         ;;
         ;; This pinned a hotfix branch because main had moved the state
@@ -109,8 +114,9 @@
         {:git/url "https://github.com/kotoba-lang/torihiki.git"
          :git/sha "6f3a28d185dd19749329cac58bc865a582ef794f"}
         io.github.kotoba-lang/bytes
-        {:git/url "https://github.com/kotoba-lang/bytes.git"
-         :git/sha "5f977dd3e8ca73185488302841ade390e1979540"}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "b94158fd48ec541b70d3c455912a06f407537ddc"
+         :deps/root "lib/kotoba.bytes"}
         ;; The storage contract `torihiki-node.store` configures, so the chain's
         ;; blocks are addressable by CID by something that is not this machine.
         ;;
@@ -126,8 +132,9 @@
         ;; tools.deps would pick anyway. When inga's pin moves, this moves with
         ;; it -- they are one version, not two.
         io.github.kotoba-lang/kotobase-storage
-        {:git/url "https://github.com/kotoba-lang/kotobase-storage.git"
-         :git/sha "143b8da947a15a10982268ca40fff5ac20827f96"}
+        {:git/url "https://github.com/kotoba-lang/kotoba.git"
+         :git/sha "b94158fd48ec541b70d3c455912a06f407537ddc"
+         :deps/root "lib/kotoba.kotobaseStorage"}
         ;; The provider the blocks actually go to: any S3-compatible endpoint,
         ;; which is B2, R2, MinIO or AWS. It is here rather than a block store
         ;; written in this repo because it already exists, already stores blocks
